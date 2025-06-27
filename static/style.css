@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    color: white;
+}
+
+.weather-card {
+    background: linear-gradient(45deg, #2196F3, #21CBF3);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.temperature {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 4rem;
+}

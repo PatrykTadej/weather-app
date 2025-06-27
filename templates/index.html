@@ -4,25 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather App</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .error { color: red; }
-    </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Weather App</h1>
-    <form method="POST">
-        <label for="city">Enter city name:</label>
-        <input type="text" name="city" id="city" required>
-        <button type="submit">Get Weather</button>
-    </form>
-    {% if error %}
-    <p class="error">{{ error }}</p>
-    {% endif %}
-    {% if weather_data %}
-    <h2>Weather in {{ weather_data['name'] }}</h2>
-    <p>Temperature: {{ weather_data['main']['temp'] }}°C</p>
-    <p>Description: {{ weather_data['weather'][0]['description'].capitalize() }}</p>
-    {% endif %}
+    <div class="weather-card">
+        <h1>Weather</h1>
+        <form method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" name="city" placeholder="Enter city name" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if weather_data %}
+            <div class="icon">
+                <img src="{{ url_for('static', filename='icons/' + icon_file) }}" alt="Weather Icon" width="100">
+            </div>
+            <h2>{{ weather_data['name'] }}</h2>
+            <p class="temperature">{{ weather_data['main']['temp'] }}°C</p>
+            <p>{{ weather_data['weather'][0]['description'].capitalize() }}</p>
+        {% endif %}
+    </div>
 </body>
 </html>
